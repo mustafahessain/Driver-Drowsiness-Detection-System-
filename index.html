@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Drowsiness Detection System  AI - مشروع التخرج</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="animated-bg"></div>
+
+    <header>
+        <div class="logo">Driver Drowsiness Detection System  <span>AI</span></div>
+        <nav>
+            <a href="#hero">الرئيسية</a>
+            <a href="#overview">ملخص المشروع</a>
+            <a href="#software">النظام البرمجي</a>
+            <a href="#hardware">المنظومة الميكانيكية</a>
+            <a href="#workflow">آلية التحكم والأكشن</a>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-container" data-aos="zoom-in">
+            <span class="badge">مشروع تخرج متميز 2026</span>
+            <h1>نظام ذكي متكامل لرصد غفوة السائق <br>وإدارة الأكشن والتوجيه الآمن</h1>
+            <p>دمج بين تقنيات الرؤية الحاسوبية (Computer Vision) وأنظمة التحكم المدمجة (Embedded Systems) لمنع حوادث الطرق الناتجة عن النوم أثناء القيادة عبر ركن السيارة تلقائياً في حالات الطوارئ.</p>
+            <div class="hero-buttons">
+                <a href="#overview" class="btn btn-primary">استعراض المنظومة</a>
+                <a href="#workflow" class="btn btn-secondary">شاهد كيف يعمل الأكشن؟</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="overview" class="section">
+        <h2 class="section-title" data-aos="fade-up">الفكرة والهدف العام</h2>
+        <div class="overview-grid">
+            <div class="overview-text" data-aos="fade-right">
+                <h3>لماذا هذا المشروع؟</h3>
+                <p>تُعد غفوة السائقين من المسببات الرئيسية لحوادث الطرق القاتلة عالمياً. الأنظمة التقليدية تكتفي بالتنبيه الصوتي فقط، وهو حل قاصر إذا دخل السائق في نوم عميق أو فقد وعيه.</p>
+                <p><strong>الحل المُبتكر في مشروعنا:</strong> بناء بروتوتايب يجمع بين كاميرا ذكية تحلل تعابير السائق لايف، ووحدة تحكم ميكانيكية قادرة على قيادة المركبة ذاتياً وإخراجها بأمان من مسار الحركة إلى حافة الطريق (الركن التلقائي).</p>
+            </div>
+            <div class="overview-stats" data-aos="fade-left">
+                <div class="stat-card">
+                    <h4>+95%</h4>
+                    <p>دقة رصد غفوة العين</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Real-time</h4>
+                    <p>المعالجة واتخاذ القرار فوراً</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="software" class="section bg-alt">
+        <h2 class="section-title" data-aos="fade-up">1. المعالجة والذكاء الاصطناعي (Software)</h2>
+        <p class="section-subtitle" data-aos="fade-up">يعتمد الكود البرمجي على خوارزميات متطورة لتتبع المؤشرات الحيوية للسائق:</p>
+        
+        <div class="cards-grid">
+            <div class="card" data-aos="flip-left">
+                <div class="card-icon">👁️</div>
+                <h3>مؤشر نسبة إغلاق العين (EAR)</h3>
+                <p>يتم حساب الـ <em>Eye Aspect Ratio</em> بناءً على 6 نقاط هندسية حول كل عين باستخدام مكتبة <strong>Dlib</strong> و <strong>OpenCV</strong> لتحديد ما إذا كانت العين مغلقة بشكل طبيعي أم غفوة مطولة.</p>
+            </div>
+            
+            <div class="card" data-aos="flip-left" data-aos-delay="200">
+                <div class="card-icon">🥱</div>
+                <h3>رصد التثاؤب (Yawning)</h3>
+                <p>يقوم النظام بقياس المسافة الرأسية بين الشفاه العليا والسفلى بشكل دقيق، لتتبع تكرار التثاؤب الذي يشير إلى بدء مرحلة الإرهاق الشديد.</p>
+            </div>
+
+            <div class="card" data-aos="flip-left" data-aos-delay="400">
+                <div class="card-icon">💻</div>
+                <h3>واجهة سطح المكتب</h3>
+                <p>تم ربط الكاميرا الموجهة للسائق ببرنامج يعرض البث المباشر مع تحديد الـ Landmarks لملامح الوجه وإصدار البيانات اللحظية إلى وحدة التحكّم.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hardware" class="section">
+        <h2 class="section-title" data-aos="fade-up">2. المنظومة الميكانيكية (Hardware Prototype)</h2>
+        <div class="hardware-container">
+            <div class="hardware-list" data-aos="fade-right">
+                <div class="hw-item">
+                    <span class="hw-num">A</span>
+                    <div>
+                        <h4>المتحكم الدقيق (Arduino Nano/Uno)</h4>
+                        <p>عقل الروبوت المسؤول عن استقبال إشارة الخطر من بايثون وتحويلها إلى نبضات تحكم للمواتير والحساسات.</p>
+                    </div>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-num">B</span>
+                    <div>
+                        <h4>دائرة القيادة (L298N Motor Driver)</h4>
+                        <p>التحكم الكامل في سرعة واتجاه مواتير العجلات لتنفيذ مناورة الانحراف ببطء وجهة اليمين.</p>
+                    </div>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-num">C</span>
+                    <div>
+                        <h4>حساسات المسافة (Ultrasonic Sensors)</h4>
+                        <p>حساسات محيطية لقراءة أبعاد الرصيف والعوائق، لضمان ألا تصطدم المركبة بأي جسم أثناء ركنها التلقائي.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hardware-display" data-aos="fade-left">
+                <div class="robot-chassis">
+                    <div class="wheel top-left"></div>
+                    <div class="wheel top-right"></div>
+                    <div class="chassis-body">لوحة التحكم والمكونات</div>
+                    <div class="wheel bottom-left"></div>
+                    <div class="wheel bottom-right"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="section bg-alt">
+        <h2 class="section-title" data-aos="fade-up">آلية إدارة الطوارئ والأكشن التتابعي</h2>
+        <p class="section-subtitle" data-aos="fade-up">اضغط على الأزرار بالأسفل لتستعرض للجنة التحكيم كيف تتصرف السيارة تتابعياً بمجرد نوم السائق:</p>
+        
+        <div class="interactive-simulator" data-aos="zoom-in">
+            <div class="sim-controls">
+                <button class="sim-btn active" onclick="triggerSim(1, this)">المرحلة 1: الإنذار</button>
+                <button class="sim-btn" onclick="triggerSim(2, this)">المرحلة 2: إشارات التحذير</button>
+                <button class="sim-btn" onclick="triggerSim(3, this)">المرحلة 3: ركن السيارة</button>
+                <button class="sim-btn" onclick="triggerSim(4, this)">المرحلة 4: التوقف و SOS</button>
+            </div>
+            <div class="sim-screen" id="simScreen">
+                <div class="sim-status-title" id="simTitle">🚨 نظام الإنذار المبكر</div>
+                <p id="simDesc">بمجرد هبوط مؤشر الـ EAR عن الحد الآمن، يطلق النظام صفارة إنذار عالية التردد داخل السيارة مدمجة مع وميض فلاش لتنبيه السائق فوراً ومحاولة إيقاظه.</p>
+                <div class="car-track">
+                    <div class="sim-car" id="simCar">🚗</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 مشروع تخرج Driver Drowsiness Detection System  AI. تم التطوير والمناقشة بنجاح أمام لجنة التحكيم.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
