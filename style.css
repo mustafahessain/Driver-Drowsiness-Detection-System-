@@ -25,19 +25,19 @@ body {
 }
 /* الكود ده هيخلي الصور واقعية ومدمجة في الخلفية بدون ما تداري على الكلام بتاعك */
 #page1 {
-    background-image: linear-gradient(rgba(13, 16, 32, 0.85), rgba(13, 16, 32, 0.85)), url('M:/cooding me/ML & DL/مشروع التخرج/MyProject/img/page1.jpg'); 
+    background-image: linear-gradient(rgba(13, 16, 32, 0.85), rgba(13, 16, 32, 0.85)), url('img/page1.jpg'); 
 }
 
 #page2 {
-    background-image: linear-gradient(rgba(13, 16, 32, 0.88), rgba(13, 16, 32, 0.88)), url('M:/cooding me/ML & DL/مشروع التخرج/MyProject/img/page2.jpg'); 
+    background-image: linear-gradient(rgba(13, 16, 32, 0.88), rgba(13, 16, 32, 0.88)), url('img/page2.jpg'); 
 }
 
 #page3 {
-    background-image: linear-gradient(rgba(13, 16, 32, 0.88), rgba(13, 16, 32, 0.88)), url('M:/cooding me/ML & DL/مشروع التخرج/MyProject/img/page3.jpg'); 
+    background-image: linear-gradient(rgba(13, 16, 32, 0.88), rgba(13, 16, 32, 0.88)), url('img/page3.jpg'); 
 }
 
 #page4 {
-    background-image: linear-gradient(rgba(13, 16, 32, 0.85), rgba(13, 16, 32, 0.85)), url('M:/cooding me/ML & DL/مشروع التخرج/MyProject/img/page4.jpg'); 
+    background-image: linear-gradient(rgba(13, 16, 32, 0.85), rgba(13, 16, 32, 0.85)), url('img/page4.jpg'); 
 }
 
 /* ####################################################################################################*/
