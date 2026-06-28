@@ -22,7 +22,7 @@
         </nav>
     </header>
 
-    <section id="hero" class="hero-section">
+    <section id="page1" id="hero" class="hero-section">
         <div class="hero-container" data-aos="zoom-in">
             <span class="badge">مشروع تخرج متميز 2026</span>
             <h1>نظام ذكي متكامل لرصد غفوة السائق <br>وإدارة الأكشن والتوجيه الآمن</h1>
@@ -34,7 +34,7 @@
         </div>
     </section>
 
-    <section id="overview" class="section">
+    <section id="page2" id="overview" class="section">
         <h2 class="section-title" data-aos="fade-up">الفكرة والهدف العام</h2>
         <div class="overview-grid">
             <div class="overview-text" data-aos="fade-right">
@@ -42,83 +42,218 @@
                 <p>تُعد غفوة السائقين من المسببات الرئيسية لحوادث الطرق القاتلة عالمياً. الأنظمة التقليدية تكتفي بالتنبيه الصوتي فقط، وهو حل قاصر إذا دخل السائق في نوم عميق أو فقد وعيه.</p>
                 <p><strong>الحل المُبتكر في مشروعنا:</strong> بناء بروتوتايب يجمع بين كاميرا ذكية تحلل تعابير السائق لايف، ووحدة تحكم ميكانيكية قادرة على قيادة المركبة ذاتياً وإخراجها بأمان من مسار الحركة إلى حافة الطريق (الركن التلقائي).</p>
             </div>
+            <!-- 🎯 الكود الجديد المطور بالبيانات الواقعية بناءً على كتاب التخرج -->
             <div class="overview-stats" data-aos="fade-left">
+    
+                <!-- الكارت الأول: مؤشر استجابة الجفن -->
                 <div class="stat-card">
-                    <h4>+95%</h4>
-                    <p>دقة رصد غفوة العين</p>
+                    <h4>EAR &lt; 0.15</h4>
+                    <p>الحد الحرج لإغلاق جفن العين (Eye Aspect Ratio)</p>
                 </div>
+
+                <!-- الكارت الثاني: زمن استجابة النظام للنوم العميق -->
                 <div class="stat-card">
-                    <h4>Real-time</h4>
-                    <p>المعالجة واتخاذ القرار فوراً</p>
+                    <h4>&lt; 2.0 Sec</h4>
+                    <p>زمن تفعيل بروتوكول الكبح الآلي التلقائي عند النوم</p>
                 </div>
+
+                <!-- الكارت الثالث: دقة الرؤية الحاسوبية اللحظية -->
+                <div class="stat-card">
+                    <h4>30 FPS</h4>
+                    <p>معدل معالجة الإطارات اللحظي (Real-time Video Processing)</p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="software" class="section bg-alt">
+    <section id="page3" id="software" class="section bg-alt">
         <h2 class="section-title" data-aos="fade-up">1. المعالجة والذكاء الاصطناعي (Software)</h2>
         <p class="section-subtitle" data-aos="fade-up">يعتمد الكود البرمجي على خوارزميات متطورة لتتبع المؤشرات الحيوية للسائق:</p>
         
         <div class="cards-grid">
-            <div class="card" data-aos="flip-left">
-                <div class="card-icon">👁️</div>
-                <h3>مؤشر نسبة إغلاق العين (EAR)</h3>
-                <p>يتم حساب الـ <em>Eye Aspect Ratio</em> بناءً على 6 نقاط هندسية حول كل عين باستخدام مكتبة <strong>Dlib</strong> و <strong>OpenCV</strong> لتحديد ما إذا كانت العين مغلقة بشكل طبيعي أم غفوة مطولة.</p>
+            <div class="card ear-wide-card" data-aos="fade-up">
+                <div class="card-icon">👁️<h3>مؤشر نسبة إغلاق العين (EAR - Eye Aspect Ratio)</h3></div>
+                
+    
+                <div class="ear-content-flex">
+                    <div class="ear-img-box">
+                        <img src="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\ear-diagram.jpg" alt="مخطط حسابات EAR الهندسية" class="ear-project-img">
+                    </div>
+        
+                    <div class="ear-text-box">
+                        <p>يعتمد النظام على خوارزمية هندسية دقيقة لرصد غفوة العين بدلاً من الاعتماد على التخمين. تقنية <strong>Dlib Facial Landmarks</strong> تقوم بتحديد 6 نقاط أساسية حول كل عين (من النقطة p1 إلى p6).</p>
+            
+                        <p><strong>المنطق الرياضي للحساب:</strong> يقوم الكود بحساب المسافات الرأسية بين الجفون العليا والسفلى (المسافة بين p2 وp6، والمسافة بين p3 وp5) ويقسمها على المسافة الأفقية بين زاويتي العين (بين p1 وp4) طبقاً للمعادلة الرياضية المعروضة في المخطط.</p>
+            
+                        <p><strong>آلية اتخاذ القرار البرمجي:</strong> 
+                            <br>• في حالة <strong>اليقظة (Open Eye):</strong> تكون القيمة الرقمية للـ EAR مرتفعة وثابتة تقريباً (حوالي 0.3).
+                            <br>• في حالة <strong>الإغلاق والغفوة (Blinking/Drowsiness):</strong> تنخفض القيمة فجأة لتقترب من الصفر. 
+                            <br>إذا استمر هذا الانخفاض لعدد إطارات متتالية (مثلاً 10 إطارات أو أكثر)، يترجم النظام البرمجي هذا هندسياً على أنها "غفوة نوم حقيقية" وليست رمشة عين طبيعية، ويبدأ فوراً بإرسال أمر الأكشن.
+                        </p>
+                    </div>
+                </div>
             </div>
             
-            <div class="card" data-aos="flip-left" data-aos-delay="200">
-                <div class="card-icon">🥱</div>
-                <h3>رصد التثاؤب (Yawning)</h3>
-                <p>يقوم النظام بقياس المسافة الرأسية بين الشفاه العليا والسفلى بشكل دقيق، لتتبع تكرار التثاؤب الذي يشير إلى بدء مرحلة الإرهاق الشديد.</p>
+            <div class="card ear-wide-card" data-aos="fade-up">
+                <div class="card-icon">🥱<h3>مؤشر رصد التثاؤب المتكرر (MAR - Mouth Aspect Ratio)</h3></div>
+                
+                <div class="ear-content-flex">
+                    <div class="ear-img-box">
+                        <img src="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\yawn-detection.jpg" alt="رصد تثاؤب السائق داخل الشاحنة" class="ear-project-img yawn-project-img">
+                    </div>
+        
+                    <div class="ear-text-box">
+                        <p>لا يكتفي النظام بمراقبة العين فقط، بل يعتمد على مؤشر <strong>Mouth Aspect Ratio (MAR)</strong> كخط دفاع أول لرصد المؤشرات المسبقة للتعب والإرهاق الشديد (Fatigue Detection) قبل دخول السائق في مرحلة النوم الفعلي.</p>
+            
+                        <p><strong>المنطق البرمجي والرياضي:</strong> يتم قراءة النقاط الهندسية المحيطة بالفم (من النقطة 49 إلى 68 في Facial Landmarks). يقيس الكود النسبة بين المسافة الرأسية لفتح الفم والمسافة الأفقية لعرَضه. عند التثاؤب (كما هو واضح في حالة سائق الشاحنة بالصورة)، تتجاوز قيمة الـ MAR الحد الطبيعي الآمن بشكل ملحوظ.</p>
+            
+                        <p><strong>آلية التحليل الذكي:</strong>
+                            <br>• <strong>التمييز بين التحدث والتثاؤب:</strong> النظام مدعم بـ Time-window Analysis (مقياس زمني)؛ فالتحدث أو الغناء يعطي قراءات مرتفعة لكسر من الثانية، بينما التثاؤب يستمر لثوانٍ متصلة (غالباً أكثر من 3 ثوانٍ).
+                            <br>• <strong>حساب التكرار (Frequency Tracking):</strong> يقوم الكود بتسجيل عدد مرات التثاؤب خلال دقيقة واحدة. إذا تكرر الفعل لأكثر من معدل معين، يطلق النظام تحذيراً صوتياً أولياً ينبّه السائق بضرورة التوقف التام في أقرب استراحة قبل غلق العين وفقدان السيطرة.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card" data-aos="flip-left" data-aos-delay="400">
-                <div class="card-icon">💻</div>
-                <h3>واجهة سطح المكتب</h3>
-                <p>تم ربط الكاميرا الموجهة للسائق ببرنامج يعرض البث المباشر مع تحديد الـ Landmarks لملامح الوجه وإصدار البيانات اللحظية إلى وحدة التحكّم.</p>
+            <div class="card ear-wide-card" data-aos="fade-up">
+                <div class="card-icon">🎛️<h3>لوحة التحكم المركزية واستقبال البيانات اللحظية (Telemetry & Control Dashboard)</h3></div>
+                
+    
+                <div class="ear-content-flex">
+                    <div class="ear-img-box">
+                        <img src="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\control-dashboard.jpg" alt="لوحة التحكم المركزية للمشروع" class="ear-project-img control-project-img">
+                    </div>
+                    <div class="ear-text-box">
+                        <p>تمثل هذه الواجهة العقل المدبر الذي يربط بين خوارزميات الرؤية الحاسوبية (Computer Vision) والأنظمة المدمجة (Embedded Systems)، حيث تعمل كمركز استقبال وإرسال لحظي للبيانات (Real-time Telemetry):</p>
+            
+                        <p><strong>📊 رصد المؤشرات الميكانيكية والكهربائية الحية:</strong>
+                            <br>• <strong>السرعة والبطارية (Speed & Battery):</strong> تعرض الواجهة مؤشراً رقمياً لسرعة السيارة الحالية ونسبة شحن البطارية لضمان استقرار الطاقة في المنظومة المدمجة.
+                            <br>• <strong>الحالة الأمنية المحيطة:</strong> رصد المسافات الأمامية عبر المستشعرات (مثل قراءة الـ Front Distance الظاهرة في الأعلى) لتفادي الاصطدام.
+                        </p>
+            
+                        <p><strong>🚨 بروتوكول التدخل التلقائي والأكشن الفوري:</strong>
+                            <br>• بمجرد استقبال إشارة خطر من موديل معالجة الوجه، تتحول الواجهة للحالة التحذيرية القصوى <span style="color:var(--danger); font-weight:bold; background:rgba(239,68,68,0.1); padding:2px 8px; border-radius:4px;">DRIVER ASLEEP - AUTO PROTECT</span>.
+                            <br>• يتم فوراً تفعيل الإنذار الصوتي (HORN) برمجياً عبر الـ Dashboard بالتوازي مع إرسال نبضات التحكم في المحركات عبر لوحة الأردوينو لتوجيه السيارة أو إيقافها بأمان تترجمها أزرار التوجيه المدمجة يمين الشاشة.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+
+<!--   #######################################################  بدايه الفديو الاول ####################################-->
+
+
+        <div class="video-card-academic" data-aos="fade-up">
+            <div class="video-academic-header">
+                <span class="academic-badge">01</span>
+                <h4>التقييم العملي لمنظومة الرؤية الحاسوبية والتحكم الذاتي اللحظي (Real-time Computer Vision & Autonomous Response)</h4>
+            </div>
+    
+            <div class="video-academic-wrapper">
+                <video controls preload="metadata">
+                    <video controls preload="metadata" poster="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\page3.jpg"></video>
+                    <source src="videos/live-test-drive.mp4" type="video/mp4">
+                 المتصفح لا يدعم تشغيل مقاطع الفيديو.
+                </video>
+            </div>
+    
+            <div class="video-academic-body">
+                <h5>الوصف :</h5>
+                <p>توثيق حي للاختبارات العملياتية (Operational Testing) للنظام المتكامل في بيئة محاكاة حية؛ حيث يظهر المقطع خوارزمية الرؤية الحاسوبية المبنية على <strong>Dlib & OpenCV</strong> أثناء رصد وتحليل ملامح وجه السائق وحساب المؤشرات الحيوية لحظياً (<strong>EAR & MAR</strong>). كما يوثق الفيديو الانتقال الفوري والمقاطعة البرمجية لتفعيل بروتوكول الحماية الطارئ (Emergency Auto-Parking) عبر الاتصال اللاسلكي، مما يتيح للسيارة توجيه العجلات والركن التلقائي الآمن بناءً على الخريطة البعدية للمستشعرات عند رصد حالات النوم أو فقدان الوعي.</p>
+            </div>
+        </div>
+        <!--   #######################################################   نهايه الفديو الاول  #################################### -->
+
     </section>
 
-    <section id="hardware" class="section">
+    <section id="page4" id="hardware" class="section">
         <h2 class="section-title" data-aos="fade-up">2. المنظومة الميكانيكية (Hardware Prototype)</h2>
         <div class="hardware-container">
-            <div class="hardware-list" data-aos="fade-right">
-                <div class="hw-item">
-                    <span class="hw-num">A</span>
-                    <div>
-                        <h4>المتحكم الدقيق (Arduino Nano/Uno)</h4>
-                        <p>عقل الروبوت المسؤول عن استقبال إشارة الخطر من بايثون وتحويلها إلى نبضات تحكم للمواتير والحساسات.</p>
+            <div class="hardware-section">
+
+                <div class="card ear-wide-card" data-aos="fade-up">
+                    <div class="ear-content-flex">
+                        <div class="ear-text-box">
+                            <div class="hardware-title-box">
+                                <span class="hardware-badge">A</span>
+                                <h3>وحدة المعالجة المركزية وفك التشكيل برمجياً (ESP32 Dual-Core MCU)</h3>
+                            </div>
+                            <p>ميكروكنترولر مزدوج النواة يعمل بتردد 240MHz مجهز بوحدة Wi-Fi و Bluetooth مدمجة. يعمل كعقدة استقبال حاسوبية (Receiver Node) تستقبل مصفوفة البيانات وجمل التحذير القادمة من خوارزمية الرؤية الحاسوبية (Python Base-Station) عبر بروتوكول اتصال لاسلكي عالي السرعة، ليقوم بمعالجتها عبر النواة المخصصة للـ Real-time tasks، ومقاطعة النظام الحالي لتوليد إشارات تحكم رقمية من نوع PWM تذهب مباشرة لمنظومة الحركة الميكانيكية لتفعيل الـ Auto-Protect بشكل فوري.</p>
+                        </div>
+                        <div class="ear-img-box">
+                            <img src="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\esp32.jpg" alt="ESP32 Microcontroller" class="ear-project-img">
+                        </div>
                     </div>
                 </div>
-                <div class="hw-item">
-                    <span class="hw-num">B</span>
-                    <div>
-                        <h4>دائرة القيادة (L298N Motor Driver)</h4>
-                        <p>التحكم الكامل في سرعة واتجاه مواتير العجلات لتنفيذ مناورة الانحراف ببطء وجهة اليمين.</p>
+
+                <div class="card ear-wide-card" data-aos="fade-up">
+                    <div class="ear-content-flex">
+                        <div class="ear-text-box">
+                        <div class="hardware-title-box">
+                            <span class="hardware-badge">B</span>
+                            <h3>جسر القيادة وعاكس القطبية الكهربائي (L298N Dual H-Bridge Motor Driver)</h3>
+                        </div>
+                        <p>وحدة قيادة كهروميكانيكية تعتمد على رقاقة الـ H-Bridge المزدوجة لعزل تيار التحكم المنخفض (Logic Level) عن تيار التشغيل العالي للمحركات (Power Level). تتحمل جهوداً تصل إلى 35V وتياراً مستمراً يبلغ 2A لكل قناة؛ مما يتيح لها استقبال إشارات الـ PWM من الـ ESP32 للتحكم الخطي الكامل في عزم وسرعة المحركات، وعكس اتجاه القطبية برمجياً لتنفيذ مناورات الانحراف الديناميكي والتوجيه العكسي أو كبح السرعة المنظم لتأمين السيارة.</p>
+                        </div>
+                        <div class="ear-img-box">
+                            <img src="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\l298n.jpg" alt="L298N Motor Driver" class="ear-project-img">
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="card ear-wide-card" data-aos="fade-up">
+                        <div class="ear-content-flex">
+                        <div class="ear-text-box">
+                            <div class="hardware-title-box">
+                                <span class="hardware-badge">C</span>
+                                <h3>منظومة الرصد السوناري والمحيطي (HC-SR04 Ultrasonic Transceiver)</h3>
+                            </div>
+                            <p>مستشعر رصد كهرومغناطيسي يعمل على تردد صوتي 40kHz غير مسموع؛ يقوم بإرسال نبضات موجية وحساب زمن الارتداد الذاتي (Time-of-Flight) عبر المعادلة الفيزيائية للاستجابة اللحظية. يوفر زاوية قياس تغطي 15 درجة ومدى رصد دقيق يتراوح بين 2cm إلى 400cm بهامش خطأ لا يتعدى 3mm، مما يوفر لبرمجية السيارة خريطة أبعاد حية للرصيف والعوائق المحيطة تمنع الاصطدام كلياً أثناء تفعيل المنظومة لبروتوكول الركن التلقائي في حالات فقدان السائق للوعي.</p>
+                        </div>
+                        <div class="ear-img-box">
+                            <img src="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\ultrasonic.jpg" alt="Ultrasonic Sensors" class="ear-project-img">
+                        </div>
                     </div>
                 </div>
-                <div class="hw-item">
-                    <span class="hw-num">C</span>
-                    <div>
-                        <h4>حساسات المسافة (Ultrasonic Sensors)</h4>
-                        <p>حساسات محيطية لقراءة أبعاد الرصيف والعوائق، لضمان ألا تصطدم المركبة بأي جسم أثناء ركنها التلقائي.</p>
-                    </div>
-                </div>
+
             </div>
             <div class="hardware-display" data-aos="fade-left">
                 <div class="robot-chassis">
                     <div class="wheel top-left"></div>
                     <div class="wheel top-right"></div>
-                    <div class="chassis-body">لوحة التحكم والمكونات</div>
+                    <div class="chassis-body">لوحة التحكم والمكونات<img src="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\control-dashboard.jpg" alt="لوحة التحكم المركزية للمشروع" class="ear-project-img control-project-img"></div>
                     <div class="wheel bottom-left"></div>
                     <div class="wheel bottom-right"></div>
                 </div>
             </div>
         </div>
+
+
+<!--   #######################################################   بدايه الفديو الثانى####################################-->
+        <div class="video-card-academic" data-aos="fade-up">
+            <div class="video-academic-header">
+                <span class="academic-badge">02</span>
+                <h4>التحليل التجريبي لبنية العتاد الصلب والأنظمة المدمجة (Hardware Architecture & Integration)</h4>
+            </div>
+    
+            <div class="video-academic-wrapper">
+                <video controls preload="metadata">
+                    <video controls preload="metadata" poster="M:\cooding me\ML & DL\مشروع التخرج\MyProject\img\conecting.jpg"></video>
+                    <source src="videos/hardware-explanation.mp4" type="video/mp4">
+                 المتصفح لا يدعم تشغيل مقاطع الفيديو.
+                </video>
+            </div>
+    
+            <div class="video-academic-body">
+                <h5>الوصف :</h5>
+                <p>استعراض ميكانيكي وكهروميكانيكي شامل يوضح التصميم البنيوي للنموذج (Prototype). يستعرض المقطع آلية الربط الشبكي والتكامل بين وحدة المعالجة المركزية المصغرة <strong>ESP32 Microcontroller</strong> ومستشعرات الرصد المحيطي بالموجات فوق الصوتية <strong>HC-SR04 Ultrasonic Sensors</strong>، مروراً بجسر القيادة المزدوج <strong>L298N الحاكم للمحركات</strong>، مع توضيح هندسي لكيفية إدارة القدرة الكهربائية وعزل خطوط التغذية لضمان استقرار النظام حياً ومنع هبوط الجهد (Voltage Drop).</p>
+            </div>
+        </div>
+<!--   #######################################################   نهايه الفديو الثانى  ####################################-->
     </section>
 
-    <section id="workflow" class="section bg-alt">
+    <section id="page5" id="workflow" class="section bg-alt">
         <h2 class="section-title" data-aos="fade-up">آلية إدارة الطوارئ والأكشن التتابعي</h2>
         <p class="section-subtitle" data-aos="fade-up">اضغط على الأزرار بالأسفل لتستعرض للجنة التحكيم كيف تتصرف السيارة تتابعياً بمجرد نوم السائق:</p>
         
@@ -142,7 +277,15 @@
     <footer>
         <p>&copy; 2026 مشروع تخرج Driver Drowsiness Detection System  AI. تم التطوير والمناقشة بنجاح أمام لجنة التحكيم.</p>
     </footer>
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+            duration: 1000, /* سرعة حركة الكارت (ثانية واحدة) */
+            once: false,    /* الأنيميشن يشتغل كل ما تنزل وتطلع عشان يفضل الموقع حيوي */
+            mirror: true
+            });
+        </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="script.js"></script>
 </body>
